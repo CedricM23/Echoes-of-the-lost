@@ -21,4 +21,8 @@ public class Sorcerer extends Character {
     public void setInventory(List<String> inventory) {
         this.inventory = inventory;
     }
+
+    public void addItemToInventory(String item){
+        inventory.add(item);
+    }
 }
