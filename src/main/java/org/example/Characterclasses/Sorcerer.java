@@ -10,6 +10,8 @@ public class Sorcerer extends Character {
     private List<String> inventory = new ArrayList<>();
 
 
+
+
     public Sorcerer(String name, String charclass) {
         super(name, charclass);
     }
