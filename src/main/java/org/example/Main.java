@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Characterclasses.Sorcerer;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -84,9 +86,5 @@ public class Main {
             //Feedback
             System.out.println("Your " + character.getCharclass() + " - "+ character.getName() + " has been created");
         }
-
-
-
-
     }
 }
