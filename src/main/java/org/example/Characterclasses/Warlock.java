@@ -1,12 +1,11 @@
 package org.example.Characterclasses;
 
-public class Sorcerer extends Character {
-
-    public Sorcerer(){
+public class Warlock extends Character {
+    public Warlock(){
 
     }
 
-    public Sorcerer(String name, String charclass) {
+    public Warlock(String name, String charclass) {
         super(name, charclass);
     }
 
@@ -16,14 +15,4 @@ public class Sorcerer extends Character {
         getAbilities().put(1, "Fire");
         System.out.println("You've been given a starter ability");
     }
-
-
-    public void useFireSpell(){
-
-    }
-
-    public void useWaterSpell(){
-
-    }
-
 }
