@@ -42,6 +42,10 @@ public class Character {
         return health_Points;
     }
 
+    public List<String> getEquippedItems() {
+        return equippedItems;
+    }
+
     public double getMagic_Points() {
         return magic_Points;
     }
@@ -108,8 +112,6 @@ public class Character {
         clothes.put("Pants", 0);
         clothes.put("Shoes", 0);
         System.out.println("You've been given your starter clothes!");
-        equippedItems.add("Wooden Sword");
-        System.out.println("You've been given a wooden sword!");
     }
 
     public void removeClothing(String item){

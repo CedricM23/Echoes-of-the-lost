@@ -15,4 +15,9 @@ public class Warlock extends Character {
         getAbilities().put(1, "Fire");
         System.out.println("You've been given a starter ability");
     }
+
+    public void giveStarterWeapon(){
+
+    }
+
 }
