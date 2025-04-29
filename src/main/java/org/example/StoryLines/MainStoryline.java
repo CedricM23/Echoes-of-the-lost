@@ -1,6 +1,8 @@
 package org.example.StoryLines;
 
+import org.example.Characterclasses.Assassin;
 import org.example.Characterclasses.Sorcerer;
+import org.example.Characterclasses.Warlock;
 
 public class MainStoryline {
 
@@ -8,11 +10,17 @@ public class MainStoryline {
     private void checkCharacter(String name, String characterClass){
         if (characterClass.equals("Sorcerer")){
             Sorcerer sorcerer = new Sorcerer(name, characterClass);
-        } if (characterClass.equals("")){
+        } if (characterClass.equals("Warlock")){
+            Warlock warlock = new Warlock(name, characterClass);
+        }if (characterClass.equals("Assassin")){
+            Assassin assassin = new Assassin(name, characterClass);
+        }if (characterClass.equals("Barbarian")){
 
         }
     }
 
+
+    //.get method on maps for damage calculation.
 
     public void run(String name, String pclass){
         checkCharacter(name, pclass);

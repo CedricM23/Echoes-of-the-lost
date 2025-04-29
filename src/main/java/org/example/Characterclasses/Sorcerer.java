@@ -1,5 +1,7 @@
 package org.example.Characterclasses;
 
+import java.util.Map;
+
 public class Sorcerer extends Character {
 
     public Sorcerer(){
@@ -11,19 +13,19 @@ public class Sorcerer extends Character {
     }
 
 
-
-    public void giveStarterAbilites(){
-        getAbilities().put(1, "Fire");
-        System.out.println("You've been given a starter ability");
+    public void giveStarterAbilites() {
+        getAbilities().put("Fire", 10);
+        for (Map.Entry<String, Integer> entry : getAbilities().entrySet()) {
+            System.out.println("You've been given a starter ability" + "-" + entry.getKey());
+        }
     }
 
-
-    public void useFireSpell(){
-
+    public void giveAbility(String Ability, int damage){
+        getAbilities().put(Ability, damage);
     }
 
-    public void useWaterSpell(){
-
+    public void removeAbility(String Ability){
+        getAbilities().remove(Ability);
     }
 
 }

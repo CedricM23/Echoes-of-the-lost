@@ -1,9 +1,6 @@
 package org.example.Characterclasses;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Character {
 
@@ -14,10 +11,10 @@ public class Character {
     private double health_Points = 100;
     private double magic_Points = 100;
     private int balance = 1000;
-    private List<String> inventory = new ArrayList<>();
-    private Map<String, Integer> clothes = new LinkedHashMap<>();
-    private List<String> equippedItems = new ArrayList<>();
-    private Map<Integer, String> abilities = new LinkedHashMap<>();
+    private Map<String, Integer> inventory = new HashMap<>();
+    private Map<String, Integer> clothes = new HashMap<>();
+    private Map<String, Integer> equippedItems = new HashMap<>();
+    private Map<String, Integer> abilities = new HashMap<>();
 
 
     //Getters and setter
@@ -42,7 +39,7 @@ public class Character {
         return health_Points;
     }
 
-    public List<String> getEquippedItems() {
+    public Map<String, Integer> getEquippedItems() {
         return equippedItems;
     }
 
@@ -54,11 +51,11 @@ public class Character {
         return balance;
     }
 
-    public void setBalence(int balence) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 
-    public List<String> getInventory() {
+    public Map<String, Integer> getInventory() {
         return inventory;
     }
 
@@ -70,11 +67,11 @@ public class Character {
         this.clothes = clothes;
     }
 
-    public Map<Integer, String> getAbilities() {
+    public Map<String, Integer> getAbilities() {
         return abilities;
     }
 
-    public void setAbilities(Map<Integer, String> abilities) {
+    public void setAbilities(Map<String, Integer> abilities) {
         this.abilities = abilities;
     }
 
@@ -91,8 +88,8 @@ public class Character {
 
     //Methods
 
-    public void addItemToInventory(String item){
-        inventory.add(item);
+    public void addItemToInventory(String item, int damage){
+        inventory.put(item, damage);
         System.out.println(item + " has been added to your inventory!");
     }
 
@@ -126,10 +123,10 @@ public class Character {
 
     public void equipItem(String item){
             //Check if the item they want to move is available.
-            if (inventory.contains(item)){
+            if (inventory.get(item) != null){
                 //if so move the item from their inventory to their equippedItems list.
-                inventory.remove(item);
-                equippedItems.add(item);
+                equippedItems.put(item, inventory.get(item));
+                inventory.remove(item, inventory.get(item));
                 //Feedback
                 System.out.println(item + " has been equipped!");
             }else{
@@ -146,11 +143,10 @@ public class Character {
 
     public void UnequipItem(String item){
         //check if the item is equipped
-        if (equippedItems.contains(item)){
-            //If the item is equipped remove it from the equipped items list
-            equippedItems.remove(item);
-            //move the item back to the inventory list
-            inventory.add(item);
+        if (equippedItems.get(item) != null){
+            //if so move the item from their equippedItems to their inventory list.
+            inventory.put(item, equippedItems.get(item));
+            equippedItems.remove(item, equippedItems.get(item));
             //Feedback
             System.out.println(item + " was not equipped!");
         } else {

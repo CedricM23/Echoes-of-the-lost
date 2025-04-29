@@ -9,15 +9,21 @@ public class Warlock extends Character {
         super(name, charclass);
     }
 
-
-
-    public void giveStarterAbilites(){
-        getAbilities().put(1, "Fire");
-        System.out.println("You've been given a starter ability");
+    public void giveStarterSpellBook(){
+        getInventory().put("SpellBook", 1);
+        System.out.println("You've been given a spellbook");
     }
 
     public void giveStarterWeapon(){
-
+        getEquippedItems().put("Dagger", 10);
+        System.out.println("You've been given a Dagger");
     }
 
+    public void giveAbility(String Ability, int damage){
+        getAbilities().put(Ability, damage);
+    }
+
+    public void removeAbility(String Ability){
+        getAbilities().remove(Ability);
+    }
 }

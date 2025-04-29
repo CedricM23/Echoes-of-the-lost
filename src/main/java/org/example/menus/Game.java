@@ -45,7 +45,7 @@ public class Game {
     }
 
     private void printTavernMenu(){
-        tavernMenu.put(1, "The Gnome Deopt - shop");
+        tavernMenu.put(1, "The Gnome Depot - shop");
         tavernMenu.put(2, "Blackwood - Town");
         tavernMenu.put(3, "SilverSand - Town");
         tavernMenu.put(4, "Devil's Den - Cave");
@@ -66,12 +66,7 @@ public class Game {
         playerClasses.put(1,"Sorcerer");
         playerClasses.put(2,"Warlock");
         playerClasses.put(3,"Assassin");
-        playerClasses.put(4,"Thief");
-        playerClasses.put(5,"Fighter");
-        playerClasses.put(6,"Druid");
-        playerClasses.put(7,"Cleric");
-        playerClasses.put(8,"Barbarian");
-        playerClasses.put(9,"Paladin");
+        playerClasses.put(4,"Barbarian");
 
         System.out.println("classes");
         System.out.println("______");
@@ -100,23 +95,8 @@ public class Game {
             //Assassin
             mainStoryline.run(playername,"Assassin");
         } else if (selection.equals("4")){
-            //Thief
-            mainStoryline.run(playername,"Thief");
-        } else if (selection.equals("5")){
-            //Fighter
-            mainStoryline.run(playername,"Fighter");
-        } else if (selection.equals("6")){
-            //Druid
-            mainStoryline.run(playername,"Druid");
-        } else if (selection.equals("7")){
-            //Cleric
-            mainStoryline.run(playername,"Cleric");
-        } else if (selection.equals("8")){
             //Barbarian
             mainStoryline.run(playername,"Barbarian");
-        } else if (selection.equals("9")){
-            //Paladin
-            mainStoryline.run(playername,"Paladin");
         } else { // possibly redundant?
             System.out.println("Invalid Entry");
         }
