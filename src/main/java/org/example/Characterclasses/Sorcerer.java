@@ -4,10 +4,6 @@ import java.util.Map;
 
 public class Sorcerer extends Character {
 
-    public Sorcerer(){
-
-    }
-
     public Sorcerer(String name, String charclass) {
         super(name, charclass);
     }

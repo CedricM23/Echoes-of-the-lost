@@ -2,10 +2,6 @@ package org.example.Characterclasses;
 
 public class Assassin extends Character{
 
-    public Assassin(){
-
-    }
-
     public Assassin(String name, String charclass){
         super(name, charclass);
     }
