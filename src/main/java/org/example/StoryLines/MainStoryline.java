@@ -1,28 +1,34 @@
 package org.example.StoryLines;
 
 import org.example.Characterclasses.Assassin;
+import org.example.Characterclasses.Barbarian;
 import org.example.Characterclasses.Sorcerer;
 import org.example.Characterclasses.Warlock;
 
 public class MainStoryline {
 
+    Sorcerer sorcerer;
+    Warlock warlock;
+    Assassin assassin;
+    Barbarian barbarian;
+
     //Method to check what character was chosen
     private void checkCharacter(String name, String characterClass){
         if (characterClass.equals("Sorcerer")){
-            Sorcerer sorcerer = new Sorcerer(name, characterClass);
+            sorcerer = new Sorcerer(name, characterClass);
         } if (characterClass.equals("Warlock")){
-            Warlock warlock = new Warlock(name, characterClass);
+            warlock = new Warlock(name, characterClass);
         }if (characterClass.equals("Assassin")){
-            Assassin assassin = new Assassin(name, characterClass);
+            assassin = new Assassin(name, characterClass);
         }if (characterClass.equals("Barbarian")){
-
+            barbarian = new Barbarian(name, characterClass);
         }
     }
 
 
     //.get method on maps for damage calculation.
 
-    public void run(String name, String pclass){
+    public void run(String name, String pclass) throws InterruptedException {
         checkCharacter(name, pclass);
 
         System.out.println(name + " " + pclass);
@@ -49,6 +55,10 @@ public class MainStoryline {
         System.out.println("");
 
         System.out.println("Narrator: " + name + " you must help us. Go to smugglers keep. Find Tarrik, you'll find his shop at the end of the road of despair, hurry " + pclass + "!");
+
+        barbarian.giveStarterWeapon();
+        barbarian.giveRage("Hatchet", 1000, 1); // TODO : error code is code for a hidden chest????
+
 
         //TODO: 1) Create a story line by passing in parameters of character info
         //TODO: 2) check to see what character was created
