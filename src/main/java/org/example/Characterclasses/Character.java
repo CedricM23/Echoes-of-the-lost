@@ -104,6 +104,20 @@ public class Character {
         clothes.put(item, protection);
     }
 
+    public void giveWeapon(String name, int damage){
+        equippedItems.put(name, damage);
+    }
+
+    public void removeWeapon(String name){
+        if(equippedItems.containsKey(name)){
+            equippedItems.remove(name);
+        } else {
+            inventory.remove(name);
+        }
+
+
+    }
+
     public void addStarterItems(){
         clothes.put("Tunic", 0);
         clothes.put("Pants", 0);
