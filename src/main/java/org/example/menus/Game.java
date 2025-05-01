@@ -83,7 +83,7 @@ public class Game {
         System.out.print("Enter your players full name: ");
     }
 
-    public void createCharacter(String selection, String playername) {
+    public void createCharacter(String selection, String playername) throws InterruptedException {
         MainStoryline mainStoryline = new MainStoryline();
         if (selection.equals("1")) {
             //Sorcerer
@@ -124,7 +124,7 @@ public class Game {
         }while(playerInputAsInt > mapSize || playerInputAsInt <= 0);
     }
 
-    public void displayMainMenuOptions(){
+    public void displayMainMenuOptions() throws InterruptedException {
         printMainMenu(); //prints menu
         InputHelper(getMainMenu().size());
 
