@@ -11,22 +11,5 @@ public class Assassin extends Character{
         System.out.println("You've been given a Dagger");
     }
 
-    public void giveWeapon(String name, int damage){
-        getEquippedItems().put(name, damage);
-    }
-
-
-
-    public void  removeWeapon(String name){
-
-        if(getEquippedItems().containsKey(name)){
-            getEquippedItems().remove(name);
-        } else {
-            getInventory().remove(name);
-        }
-
-
-    }
-
 
 }
