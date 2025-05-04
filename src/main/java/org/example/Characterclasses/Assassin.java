@@ -10,6 +10,4 @@ public class Assassin extends Character{
         getEquippedItems().put("Dagger", 10);
         System.out.println("You've been given a Dagger");
     }
-
-
 }

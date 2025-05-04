@@ -104,6 +104,8 @@ public class Character {
         clothes.put(item, protection);
     }
 
+    //TODO: possibly weapons can be objects so they can be sold and have different attributes?
+
     public void giveWeapon(String name, int damage){
         equippedItems.put(name, damage);
     }
@@ -116,6 +118,13 @@ public class Character {
         }
 
 
+    }
+
+    public void buyWeapon(int buyAmount,String name, int damage){
+        if (buyAmount < balance){
+            balance = balance - buyAmount;
+            inventory.put(name,damage);
+        }
     }
 
     public void addStarterItems(){

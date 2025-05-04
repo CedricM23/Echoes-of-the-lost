@@ -1,10 +1,13 @@
 package org.example.menus;
 
-import org.example.StoryLines.MainStoryline;
+import org.example.Characterclasses.Assassin;
+import org.example.Characterclasses.Barbarian;
+import org.example.Characterclasses.Sorcerer;
+import org.example.Characterclasses.Warlock;
+import org.example.Enemies.Enemy;
+import org.example.Enemies.Orc;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
 
@@ -12,12 +15,15 @@ public class Game {
     int playerInputAsInt;
     String playerInput;
     Scanner player = new Scanner(System.in);
-
-
     private Map<Integer, String> mainMenu = new LinkedHashMap<>();
     private Map<Integer, String> playerClasses = new LinkedHashMap<>();
     private Map<Integer, String> tavernMenu = new LinkedHashMap<>();
-    MainStoryline mainStoryline = new MainStoryline();
+    private Map<Integer, Enemy> Enemies = new LinkedHashMap<>();
+    Sorcerer sorcerer;
+    Warlock warlock;
+    Assassin assassin;
+    Barbarian barbarian;
+
 
     //Getters
     public Map<Integer, String> getMainMenu() {
@@ -84,19 +90,18 @@ public class Game {
     }
 
     public void createCharacter(String selection, String playername) throws InterruptedException {
-        MainStoryline mainStoryline = new MainStoryline();
         if (selection.equals("1")) {
             //Sorcerer
-            mainStoryline.run(playername,"Sorcerer");
+           run(playername,"Sorcerer");
         } else if (selection.equals("2")){
             //Warlock
-            mainStoryline.run(playername,"Warlock");
+            run(playername,"Warlock");
         } else if (selection.equals("3")){
             //Assassin
-            mainStoryline.run(playername,"Assassin");
+            run(playername,"Assassin");
         } else if (selection.equals("4")){
             //Barbarian
-            mainStoryline.run(playername,"Barbarian");
+            run(playername,"Barbarian");
         } else { // possibly redundant?
             System.out.println("Invalid Entry");
         }
@@ -111,6 +116,9 @@ public class Game {
 //    }
 
 
+    public Map<Integer, Enemy> getEnemies() {
+        return Enemies;
+    }
 
     private void InputHelper(int mapSize){
         do{
@@ -172,7 +180,39 @@ public class Game {
 
     // STORYLINE
 
+    public void enemyGenerator(){
+        //the range for enemyGeneration
+        int max = 10;
+        int min = 1;
+        int range = max - min + 1;
 
+        //number randomizer between 1-5 for determining the number of enemies
+        int enemyGeneratorNumber = (int) (Math.random() * range) + min;
+        //adds the enemies to the list
+        for (int i=0;i<enemyGeneratorNumber;i++){
+            //generate diff types of enemies
+            Orc orc = new Orc();
+            Enemies.put(i, orc);
+        }
+        System.out.println(Enemies.size());
+    }
+
+
+    private void checkCharacter(String name, String characterClass){
+        if (characterClass.equals("Sorcerer")){
+            sorcerer = new Sorcerer(name, characterClass);
+        } if (characterClass.equals("Warlock")){
+            warlock = new Warlock(name, characterClass);
+        }if (characterClass.equals("Assassin")){
+            assassin = new Assassin(name, characterClass);
+        }if (characterClass.equals("Barbarian")){
+            barbarian = new Barbarian(name, characterClass);
+        }
+    }
+
+
+
+    //TODO: MOVE STORYLINE HERE
 
 //    public void run(String name, String pclass){
 //        checkCharacter(pclass);
@@ -181,7 +221,41 @@ public class Game {
 //        //TODO:2 each time there is new dialogue check to see what character the player has to change the dialogue accordingly
 //    }
 
+    public void run(String name, String pclass) throws InterruptedException {
+        checkCharacter(name, pclass);
+
+        System.out.println(name + " " + pclass);
+        System.out.println(" ");
+        System.out.println("Welcome " + pclass +" to ECHOES OF THE LOST ");
+        System.out.println(" ");
+        System.out.println("Narrator: Long ago in the valleys of nigh, the seven lands united in battle, to fight Elydras the Soulbinder, a grand lich. Once a man of the arcane, " + '\n' +
+                "Elydras delved too deep into the forbidden rites of the old world, trading his soul for dominion over death itself. " + "\n" +
+                "They say Elydras does not kill, he harvests." + " When his shadow falls upon a soul, their body withers, but their essence " + '\n' +
+                "lingers, screaming silently in a prison unseen. Through ancient sigils etched in bone and ash, he binds the soul to his will, " + '\n' +
+                "stripping it of memory, mercy, and name. The Seven Lands burned, their warriors falling not to blade, but to despair..the seven lands destroyed" + '\n' +
+                "But from the ashes, hope formed—the Covenant of Flame. The Seven Lords, ancient enemies bound by a single vow, forged a weapon" + "\n" + "not of steel, but of sacrifice."
+                + "Each lord poured their blood into a relic, THE ETERNAL SHARD, and stabbed Elydras sealing him in the valley of the soulwalkers, his victims cursed to rome Aeldenor for eternity" + "\n" +
+                "For a millennia peace endured, the lands have healed from his tyranny, his name cast from the record books and lost to the annals of time, until now... ");
+
+        System.out.println("");
+
+        System.out.println("Elydras: Did you think death would hold me?");
+
+        System.out.println("");
+
+        System.out.println("Elydras emerges from the crypt, more wraith than man, crowned in flame that casts no heat.");
+
+        System.out.println("");
+
+        System.out.println("Narrator: " + name + " you must help us. Go to smugglers keep. Find Tarrik, you'll find his shop at the end of the road of despair, hurry " + pclass + "!");
 
 
+
+
+
+        //TODO: 1) Create a story line by passing in parameters of character info
+        //TODO: 2) check to see what character was created
+        //TODO:2 each time there is new dialogue check to see what character the player has to change the dialogue accordingly
+    }
 
 }

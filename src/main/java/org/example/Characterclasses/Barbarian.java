@@ -80,8 +80,4 @@ public class Barbarian extends Character{
             throw new RuntimeException(e.getMessage()); //inside of this exception a method call will be run to show a chest and a code.
         }
     }
-
-
-
-
 }
