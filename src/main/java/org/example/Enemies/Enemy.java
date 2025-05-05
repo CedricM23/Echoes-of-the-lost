@@ -9,7 +9,7 @@ public class Enemy {
     int Health = 100;
     int attackNumber;
     boolean isAlive = true;
-
+    String type = "";
     public Enemy() {}
 
     public int getHealth() {
@@ -24,6 +24,13 @@ public class Enemy {
         isAlive = alive;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public void checkhealth(){
         if (getHealth() <= 0){

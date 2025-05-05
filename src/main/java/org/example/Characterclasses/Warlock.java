@@ -1,12 +1,23 @@
 package org.example.Characterclasses;
 
 public class Warlock extends Character {
+    String type = "";
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Warlock(){
 
     }
 
     public Warlock(String name, String charclass) {
         super(name, charclass);
+        setType(charclass);
     }
 
     public void giveStarterSpellBook(){

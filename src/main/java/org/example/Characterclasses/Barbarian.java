@@ -55,7 +55,7 @@ public class Barbarian extends Character{
                         //loop calls a method that damages a current enemy using the new damage amount
                         //if they are dead it loops again decrementing your health and damaging the next enemy
                         for (int x = 0; x < 1; x++) {
-                            System.out.println("new enemy"); // placeholder for method
+                            System.out.println("new enemy"); // placeholder for method to kill enemies
                             amountOfEnemies -= 1;
                             if (amountOfEnemies == 0) {
                                 System.out.println("All of the enemies have been killed");

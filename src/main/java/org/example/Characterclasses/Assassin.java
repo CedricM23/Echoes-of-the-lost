@@ -4,6 +4,7 @@ public class Assassin extends Character{
 
     public Assassin(String name, String charclass){
         super(name, charclass);
+        setCharclass("Assassin");
     }
 
     public void giveStarterWeapon(String name, String damage){

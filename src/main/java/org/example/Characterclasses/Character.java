@@ -11,8 +11,10 @@ public class Character {
     private double health_Points = 100;
     private double magic_Points = 100;
     private int balance = 1000;
+    //change all inventory items to objects
     private Map<String, Integer> inventory = new HashMap<>();
     private Map<String, Integer> clothes = new HashMap<>();
+    //change all weapons to objects
     private Map<String, Integer> equippedItems = new HashMap<>();
     private Map<String, Integer> abilities = new HashMap<>();
 
@@ -177,6 +179,7 @@ public class Character {
             System.out.println("That item has not been equipped.");
         }
     }
+
 
 
     //end of document
