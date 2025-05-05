@@ -119,7 +119,7 @@ public class Game {
             try {
                 System.out.print("Select an option: ");
                 playerInput = player.nextLine();
-                playerInputAsInt = Integer.parseInt(playerInput);
+                playerInputAsInt = Integer.parseInt(playerInput.trim());
             } catch (Exception e) {
                 System.out.println("Input is not valid");
             }
@@ -156,7 +156,7 @@ public class Game {
 
         if (playerInputAsInt == 1) { //Option 1 - Asks player for desired name and class and creates a character
             printCharacterNameSelection();
-            String name = player.nextLine();
+            String name = player.nextLine().trim();
             String playerName = name.substring(0, 1).toUpperCase() + name.substring(1);
             printClassMenu();
             InputHelper(playerClasses.size());
@@ -297,14 +297,7 @@ public class Game {
         System.out.println("Narrator: " + character.getName() + " you must help us. Go to smugglers keep. Find Tarrik, you'll find his shop at the end of the road of despair, hurry " + character.getCharclass() + "!");
         DialogueHelper();
 
-
-
-
-
-
-        //TODO: 1) Create a story line by passing in parameters of character info
-        //TODO: 2) check to see what character was created
-        //TODO:2 each time there is new dialogue check to see what character the player has to change the dialogue accordingly
+        //TODO: 1) each time there is new dialogue check to see what character the player has to change the dialogue accordingly
     }
 
 
