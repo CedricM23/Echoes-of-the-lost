@@ -49,7 +49,7 @@ public class Game {
         mainMenu.put(1, "Create a new character");
         mainMenu.put(2, "Caves & Towns");
         mainMenu.put(3, "list all characters");
-        mainMenu.put(4, "Upload a save file");
+        mainMenu.put(4, "Load save game");
         mainMenu.put(5, "Save & Exit");
 
 
@@ -110,16 +110,6 @@ public class Game {
         }
     }
 
-
-    //menu checker
-
-//    private void menuChecker(int menuNum){
-//        if (menuNum == 1){
-//
-//        }
-//    }
-
-
     public Map<Integer, Enemy> getEnemies() {
         return Enemies;
     }
@@ -178,7 +168,7 @@ public class Game {
             //make a player selector
             //when selected, it maybe goes back to the main menu???
             printMainMenu();
-        } else if (playerInputAsInt == 4) { //Option 3 - Upload to a databse
+        } else if (playerInputAsInt == 4) { //Option 3 - Upload to a database
             System.out.print("Your data is being uploaded...");
             // TODO: Read data from a file and input data into a map, call the .run method for the story line
         } else if (playerInputAsInt == 5) { //Option 4 - Save & Exit
@@ -225,8 +215,6 @@ public class Game {
         }
     }
 
-    // STORYLINE
-
     /**
      * this method generates enemies but most likely chickens
      */
@@ -247,6 +235,9 @@ public class Game {
         System.out.println(Enemies.size());
     }
 
+    /**
+     * views the amount of enemies or chickens in a location
+     */
     public void viewAmountOfEnemies() {
         for (Map.Entry<Integer, Enemy> enemy : Enemies.entrySet()) {
             System.out.println(enemy.getKey() + 1 + ") " + enemy.getValue().getType());
@@ -256,39 +247,37 @@ public class Game {
 
     //kill enemy method
 
+    /**
+     * Creates a character or a chicken, whichever comes first.
+     * @param selection player menu selection
+     * @param name the desired name that was entered by the character
+     * @throws InterruptedException not enough chickens made eggs
+     */
     public void createCharacter(String selection, String name) throws InterruptedException {
         if (selection.equals("1")) {
             sorcerer = new Sorcerer(name, "Sorcerer");
             characters.put(characters.size() + 1, sorcerer);
-            run(name, sorcerer);
+            run(sorcerer);
         } else if (selection.equals("2")) {
             warlock = new Warlock(name, "Warlock");
             characters.put(characters.size() + 1, warlock);
-            run(name, warlock);
+            run(warlock);
         } else if (selection.equals("3")) {
             assassin = new Assassin(name, "Assassin");
             characters.put(characters.size() + 1, assassin);
-            run(name, assassin);
+            run(assassin);
         } else if (selection.equals("4")) {
             barbarian = new Barbarian(name, "Barbarian");
             characters.put(characters.size() + 1, barbarian);
-            run(name, barbarian);
+            run(barbarian);
         } else { // possibly redundant?
             System.out.println("Invalid Entry");
         }
     }
 
+    //Storyline
 
-    //TODO: MOVE STORYLINE HERE
-
-//    public void run(String name, String pclass){
-//        checkCharacter(pclass);
-//        //TODO: 1) Create a story line by passing in parameters of character info
-//        //TODO: 2) check to see what character was created
-//        //TODO:2 each time there is new dialogue check to see what character the player has to change the dialogue accordingly
-//    }
-
-    public void run(String name, Character character) throws InterruptedException {
+    public void run(Character character) throws InterruptedException {
         System.out.println(" ");
         System.out.println("Welcome " + character.getCharclass() + " to ECHOES OF THE LOST, " + character.getCharclass().toLowerCase());
         System.out.println(" ");
@@ -300,14 +289,17 @@ public class Game {
                 "But from the ashes, hope formed—the Covenant of Flame. The Seven Lords, ancient enemies bound by a single vow, forged a weapon" + "\n" + "not of steel, but of sacrifice."
                 + "Each lord poured their blood into a relic, THE ETERNAL SHARD, and stabbed Elydras sealing him in the valley of the soulwalkers, his victims cursed to rome Aeldenor for eternity" + "\n" +
                 "For a millennia peace endured, the lands have healed from his tyranny, his name cast from the record books and lost to the annals of time, until now... ");
-
         //either use thread.sleep for a delay or dialougehelper
         DialogueHelper();
         System.out.println("Elydras: Did you think death would hold me?");
         System.out.println("Elydras emerges from the crypt, more wraith than man, crowned in flame that casts no heat.");
         DialogueHelper();
-        System.out.println("Narrator: " + name + " you must help us. Go to smugglers keep. Find Tarrik, you'll find his shop at the end of the road of despair, hurry " + character.getCharclass() + "!");
+        System.out.println("Narrator: " + character.getName() + " you must help us. Go to smugglers keep. Find Tarrik, you'll find his shop at the end of the road of despair, hurry " + character.getCharclass() + "!");
         DialogueHelper();
+
+
+
+
 
 
         //TODO: 1) Create a story line by passing in parameters of character info
