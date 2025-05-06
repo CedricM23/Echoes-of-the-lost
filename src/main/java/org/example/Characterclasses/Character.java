@@ -12,9 +12,11 @@ public class Character {
     private double magic_Points = 100;
     private int balance = 1000;
     //change all inventory items to objects
+    //TODO: change from Integer to an Object
     private Map<String, Integer> inventory = new HashMap<>();
     private Map<String, Integer> clothes = new HashMap<>();
     //change all weapons to objects
+    //TODO: change from Integer to an Object
     private Map<String, Integer> equippedItems = new HashMap<>();
     private Map<String, Integer> abilities = new HashMap<>();
 
@@ -113,6 +115,7 @@ public class Character {
     }
 
     public void removeWeapon(String name){
+        //TODO: change to containsValue after changing the map
         if(equippedItems.containsKey(name)){
             equippedItems.remove(name);
         } else {
@@ -148,8 +151,10 @@ public class Character {
 
     public void equipItem(String item){
             //Check if the item they want to move is available.
+        //TODO: change to containsValue after changing the map
             if (inventory.get(item) != null){
                 //if so move the item from their inventory to their equippedItems list.
+                //TODO change to integer, object
                 equippedItems.put(item, inventory.get(item));
                 inventory.remove(item, inventory.get(item));
                 //Feedback
@@ -168,8 +173,10 @@ public class Character {
 
     public void UnequipItem(String item){
         //check if the item is equipped
+        //TODO: change to containsValue after changing the map
         if (equippedItems.get(item) != null){
             //if so move the item from their equippedItems to their inventory list.
+            //TODO change to integer, object
             inventory.put(item, equippedItems.get(item));
             equippedItems.remove(item, equippedItems.get(item));
             //Feedback
@@ -178,6 +185,10 @@ public class Character {
             //If the item is not equipped display a message to the user.
             System.out.println("That item has not been equipped.");
         }
+    }
+
+    public void Attack(){
+
     }
 
 
