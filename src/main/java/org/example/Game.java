@@ -126,7 +126,7 @@ public class Game {
         } while (playerInputAsInt > mapSize || playerInputAsInt <= 0);
     }
 
-    private void purchaseHelper(int mapSize){
+    private void PurchaseHelper(int mapSize){
     do{
         try {
             System.out.print("Select an item to purchase: ");
@@ -167,6 +167,7 @@ public class Game {
             listCharacters();
             //make a player selector
             //when selected, it maybe goes back to the main menu???
+            DialogueHelper();
             printMainMenu();
         } else if (playerInputAsInt == 4) { //Option 3 - Upload to a database
             System.out.print("Your data is being uploaded...");
@@ -186,7 +187,7 @@ public class Game {
             System.out.println("-------------");
             theGnomeDepot.loadItemsForPurchase();
             printTheGnomeDepotPurchasemenu();
-            purchaseHelper(theGnomeDepot.getItemsForPurchase().size());
+            PurchaseHelper(theGnomeDepot.getItemsForPurchase().size());
         } else if (playerInputAsInt == 2) {
             // Blackwood - Town
         } else if (playerInputAsInt == 3) {
@@ -202,16 +203,11 @@ public class Game {
         }
     }
 
-
-    public void purchaseItem(int amount, Character character){
-        if (character.getCharclass() == "Warlock"){
-            warlock.setBalance(warlock.getBalance() - amount);
-        } else if (character.getCharclass() == "Sorcerer") {
-            sorcerer.setBalance(sorcerer.getBalance() - amount);
-        } else if (character.getCharclass() == "Barbarian") {
-            barbarian.setBalance(barbarian.getBalance() - amount);
-        } else if (character.getCharclass() == "Assassin") {
-            assassin.setBalance(assassin.getBalance() - amount);
+    //grab the "amount" from the object
+    public void purchaseItem(int amount, Character character, String item){
+        if (amount < character.getBalance()){
+            character.setBalance(character.getBalance() - amount);
+            character.addItemToInventory(item, character.getInventory().get(item));
         }
     }
 
@@ -275,6 +271,13 @@ public class Game {
         }
     }
 
+    //steal an item from the shop
+
+    public void stealAnItem(int selectedItem){
+        theGnomeDepot.getItemsForPurchase().remove(selectedItem);
+        theGnomeDepot.setWindows(theGnomeDepot.getWindows() - 1);
+    }
+
     //Storyline
 
     public void run(Character character) throws InterruptedException {
@@ -296,7 +299,6 @@ public class Game {
         DialogueHelper();
         System.out.println("Narrator: " + character.getName() + " you must help us. Go to smugglers keep. Find Tarrik, you'll find his shop at the end of the road of despair, hurry " + character.getCharclass() + "!");
         DialogueHelper();
-
         //TODO: 1) each time there is new dialogue check to see what character the player has to change the dialogue accordingly
     }
 
