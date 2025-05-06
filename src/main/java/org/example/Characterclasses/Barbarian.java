@@ -75,9 +75,9 @@ public class Barbarian extends Character{
             } else {
                 System.out.println("you don't have enough health to rage.");
             }
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             //if this code is ever interrupted it will throw an exception with the code of a hidden chest that can only be found if the game breaks
-            throw new RuntimeException(e.getMessage()); //inside of this exception a method call will be run to show a chest and a code.
+            throw new RuntimeException("The code for the god chest is 498..."); //inside of this exception a method call will be run to show a chest and a code.
         }
     }
 }
